@@ -1,0 +1,10 @@
+
+<div class="md-input-group medium-2 columns">
+	<input class="md-input" id="roomName" type="text" placeholder="Enter the Room name" [(ngModel)]="roomName">
+  </div>
+<button class="md-button" color="blue" (click)="createRoom()">Create Room</button>
+
+<button type="button" class="md-button" color="red" (click)="logout()">Logout</button>
+<button type="button" class="md-button" (click)="listRooms()">ListRooms</button>
+<button type="button" class="md-button" (click)="addMemebersToSpace()">addMemebersToSpace</button>
+<p>{{roomsPresent}}</p>
