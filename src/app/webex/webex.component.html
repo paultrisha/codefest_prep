@@ -1,10 +1,67 @@
+<div *ngIf="loader" id="add_loading">
+	<i id="add_loading_image" class="md-spinner md-spinner--56 md-spinner--blue"></i>
+</div>
 
-<div class="md-input-group medium-2 columns">
-	<input class="md-input" id="roomName" type="text" placeholder="Enter the Room name" [(ngModel)]="roomName">
-  </div>
-<button class="md-button" color="blue" (click)="createRoom()">Create Room</button>
-
-<button type="button" class="md-button" color="red" (click)="logout()">Logout</button>
-<button type="button" class="md-button" (click)="listRooms()">ListRooms</button>
-<button type="button" class="md-button" (click)="addMemebersToSpace()">addMemebersToSpace</button>
-<p>{{roomsPresent}}</p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-2">
+			<div class="md-avatar md-avatar--active" title="Tom Smith">
+				<span class="md-avatar__letter">TP</span>
+			</div>
+			<p>Welcome {{userName}},</p>
+		</div>
+		<div class="col-sm-7">
+			<div class="md-input-group small-9 columns">
+				<input class="md-input" id="roomName" type="text" placeholder="Enter room name" [(ngModel)]="roomName">
+			</div>
+			<button id="createRoom" class="md-button md-button--blue" (click)="createRoom()">Create Room</button>
+		</div>
+		<div class="col-sm-1">
+			<button type="button" id="logout" class="md-button md-button--red" (click)="logout()">Logout</button>
+		</div>
+	</div>
+	<div class="row">
+		<!-- <label id="selectRoom" class="md-label" for="normalInput">Select Room</label> -->
+		<div class="col-sm-2">
+			<button type="button" class="md-button" id="listRoom" (click)="listRooms()">Select Room</button>
+		</div>
+		<div class="col-sm-7">
+			<!-- <select id="webexRooms" class="browser-default custom-select" name="space" [(ngModel)]="room"
+				#space="ngModel">
+				<option *ngFor="let rooms of room" [value]="rooms.id">{{rooms.title}}
+				</option>
+			</select> -->
+		</div>
+	</div>
+	<div class="row">
+		<!-- <div class="col-sm-2">
+			<label id="addMemebers" class="md-label" for="normalInput">Add members</label>
+		</div> -->
+		<div class="col-sm-7">
+			<div class="md-input-group small-9 columns">
+				<input class="md-input" id="memberEmail" type="text" placeholder="Enter member email id"
+					[(ngModel)]="memberEmail">
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<button type="button" class="md-button md-button--blue" id="addMember" (click)="addMemebersToSpace()">Add
+				Member</button>
+		</div>
+	</div>
+	<div class="row">
+		<!-- <div class="col-sm-2">
+			<button type="button" class="md-button" id="addMember" (click)="addMemebersToSpace()">Message</button>
+		</div> -->
+		<div class="col-sm-7">
+			<div class="md-input-group small-9 columns">
+				<input class="md-input" id="message" type="text" placeholder="Type your message" [(ngModel)]="message">
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<button type="button" class="md-button md-button--blue" id="sendMessage"
+				(click)="sendMessageToSpace(roomId,message)">Send</button>
+		</div>
+	</div>
+</div>
+<app-dialog *ngIf="showAlertMessage" [showOk]="true" [showCancel]="false" [modalMessage]="dialogMessage"
+	(okDialogEvent)="okDialogAction()"></app-dialog>

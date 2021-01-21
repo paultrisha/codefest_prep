@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WebexComponent } from './webex/webex.component';
 import { FormsModule } from '@angular/forms';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WebexComponent
+	WebexComponent,
+	DialogComponent,
   ],
   imports: [
     BrowserModule,
