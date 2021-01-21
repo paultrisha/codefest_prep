@@ -60,6 +60,9 @@ export class WebexComponent implements OnInit {
 	createRoom() {
 		if (this.roomName) {
 			this.webex.rooms.create({ title: this.roomName });
+		} else {
+			this.showAlertMessage = true;
+			this.dialogMessage = 'Please enter room name';
 		}
 	}
 
