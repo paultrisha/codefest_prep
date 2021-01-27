@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Webex from "webex";
 import { Room } from '../models/room.model';
-
 @Component({
 	selector: 'app-webex',
 	templateUrl: './webex.component.html',
@@ -13,15 +12,15 @@ export class WebexComponent implements OnInit {
 
 	loader = false;
 	userName = null;
-	item = 0;
 	webex;
 	roomName;
 	roomsPresent = [];
 	memberEmail;
-	room: Room = new Room();
+	room: Room[] = [];
 	message;
 	showAlertMessage = false;
 	dialogMessage;
+	selectedRoomId;
 
 	ngOnInit() {
 		let redirect_uri = `http://localhost:4200/`;
@@ -46,15 +45,20 @@ export class WebexComponent implements OnInit {
 					"access_token",
 					this.webex.credentials.supertoken.access_token
 				);
-				this.webex.people.get('me').then(data => {
-					this.userName = data.displayName;
-					console.log(this.userName);
-					this.loader = false;
-				});
 			} else {
 				this.webex.authorization.initiateLogin();
 			}
 		});
+
+		if (localStorage.getItem('access_token')) {
+			console.log('check');
+			this.webex.people.get('me').then(data => {
+				this.userName = data.displayName;
+				console.log(this.userName);
+				this.loader = false;
+			});
+
+		}
 	}
 
 	createRoom() {
@@ -68,38 +72,36 @@ export class WebexComponent implements OnInit {
 
 	listRooms() {
 		this.webex.rooms.list({ max: 10 }).then((rooms) => {
-			this.item = 0;
-			for (let room of rooms.items) {
-				this.room.title = room.title;
-				this.room.id = room.id;
-				this.item++;
+			let i = 0;
+			for (let item of rooms.items) {
+				this.room[i] = new Room();
+				this.room[i].title = item.title;
+				this.room[i].id = item.id;
+				i++;
 			}
-			console.log('tt', this.room);
 		});
 	}
 
-	testaddMemebersToSpace(email) {
-		this.webex.rooms.create({ title: `My First Room` }).then((room) => {
-			return Promise.all([
-				this.webex.memberships.create({
-					roomId: room.id,
-					personEmail: email,
-				}),
-			]).then(() =>
-				this.webex.messages.create({
-					markdown: `**Created the space and added you using webex SDK**`,
-					roomId: room.id,
-				})
-			);
-		});
-	}
+	// testaddMemebersToSpace(email) {
+	// 	this.webex.rooms.create({ title: `My First Room` }).then((room) => {
+	// 		return Promise.all([
+	// 			this.webex.memberships.create({
+	// 				roomId: room.id,
+	// 				personEmail: email,
+	// 			}),
+	// 		]).then(() =>
+	// 			this.webex.messages.create({
+	// 				markdown: `**Created the space and added you using webex SDK**`,
+	// 				roomId: room.id,
+	// 			})
+	// 		);
+	// 	});
+	// }
 
 	addMemebersToSpace() {
-		console.log(this.room.id);
-		console.log(this.memberEmail);
-		if (this.room.id && this.memberEmail) {
+		if (this.selectedRoomId && this.memberEmail) {
 			this.webex.memberships.create({
-				roomId: this.room,
+				roomId: this.selectedRoomId,
 				personEmail: this.memberEmail,
 			});
 		} else {
@@ -109,11 +111,10 @@ export class WebexComponent implements OnInit {
 	}
 
 	sendMessageToSpace() {
-		console.log(this.message);
-		if (this.room.id && this.message) {
+		if (this.selectedRoomId && this.message) {
 			this.webex.messages.create({
 				markdown: this.message,
-				roomId: this.room.id,
+				roomId: this.selectedRoomId,
 			});
 		} else {
 			this.showAlertMessage = true;
