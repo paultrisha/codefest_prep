@@ -5,10 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-	"test": "ng test",
-	"test-headless": "ng test --watch=false --browsers=ChromiumHeadlessNoSandbox",
+    "test": "ng test",
+    "test-headless": "ng test --watch=false --browsers=ChromiumHeadlessNoSandbox",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+	"e2e": "ng e2e",
+	"cypress:open": "cypress open",
+	"cypress:headless": "cypress run --config screenshotOnRunFailure=false,video=false"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +25,7 @@
     "@angular/router": "~7.0.0",
     "@momentum-ui/angular": "^11.7.7",
     "core-js": "^2.5.4",
+    "cypress": "^6.3.0",
     "node-sass": "^4.14.1",
     "rxjs": "~6.3.3",
     "webex": "^1.114.1",
