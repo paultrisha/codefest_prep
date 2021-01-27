@@ -1,6 +1,11 @@
 # CodefestPrep
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+The webapp is created as a part of Codefest 2021 Preparatory task. The webapp is a simple app created with Webex SDKs which allow the user to do the following:
+* Login to webex
+* Create a webex space/room
+* Add memeber to the selected space
+* Send a message to the selected space
+* Logout
 
 ## Development server
 
