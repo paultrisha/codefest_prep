@@ -8,17 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-	WebexComponent,
-	DialogComponent,
-  ],
-  imports: [
-    BrowserModule,
-	AppRoutingModule,
-	FormsModule,
-  ],
+  declarations: [AppComponent, WebexComponent, DialogComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
