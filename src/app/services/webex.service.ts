@@ -9,9 +9,8 @@ export class WebexService {
 
   webex;
 
-  loginto() {
+  beforeLogin() {
     const redirect_uri = `http://localhost:4200/`;
-
     this.webex = Webex.init({
       config: {
         meetings: {
@@ -25,19 +24,50 @@ export class WebexService {
         },
       },
     });
+    this.listenForWebex();
+  }
+
+  async listenForWebex() {
     this.webex.once(`ready`, () => {
-      // console.log('READY', this.webex.credentials.supertoken)
       if (this.webex.credentials.supertoken) {
         localStorage.setItem(
           'access_token',
           this.webex.credentials.supertoken.access_token
         );
-        this.webex.people.get('me').then((data) => {
-          // return data.dispayName;
-        });
       } else {
         this.webex.authorization.initiateLogin();
       }
     });
+  }
+
+  async createRoom(roomName) {
+    this.webex.rooms.create({ title: roomName });
+  }
+
+  async sendMessage(message, selectedRoomId) {
+    this.webex.messages.create({
+      markdown: message,
+      roomId: selectedRoomId,
+    });
+  }
+
+  async addMember(selectedRoomId, memberEmail) {
+    this.webex.memberships.create({
+      roomId: selectedRoomId,
+      personEmail: memberEmail,
+    });
+  }
+
+  async getLoginUserDetail() {
+    return this.webex.people.get('me');
+  }
+
+  async listRoom() {
+    return this.webex.rooms.list();
+  }
+
+  logout() {
+    this.webex.logout();
+    localStorage.removeItem('access_token');
   }
 }

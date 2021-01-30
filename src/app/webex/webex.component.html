@@ -3,17 +3,7 @@
 </div>
 
 <div class="container">
-	<div class="row" id="headerDiv">
-		<div class="col-sm-3">
-			<div class="md-avatar md-avatar--active" title="Tom Smith">
-				<span class="md-avatar__letter">TP</span>
-			</div>
-			<p>Welcome {{userName}},</p>
-		</div>
-		<div class="col-sm-4">
-			<button type="button" id="logout" class="md-button md-button--red" (click)="logout()">Logout</button>
-		</div>
-	</div>
+	<app-header></app-header>
 	<div id="contentDiv">
 		<div class="row">
 			<div class="col-sm-7">
@@ -27,7 +17,6 @@
 			</div>
 		</div>
 		<div class="row">
-			<!-- <label id="selectRoom" class="md-label" for="normalInput">Select Room</label> -->
 			<div class="col-sm-7">
 				<select id="webexRooms" class="browser-default custom-select" name="space" [(ngModel)]="selectedRoomId"
 					#space="ngModel">
@@ -41,9 +30,6 @@
 			</div>
 		</div>
 		<div class="row">
-			<!-- <div class="col-sm-2">
-			<label id="addMemebers" class="md-label" for="normalInput">Add members</label>
-		</div> -->
 			<div class="col-sm-7">
 				<div class="md-input-group small-12 columns">
 					<input class="md-input" id="memberEmail" type="text" placeholder="Enter member email id"
@@ -57,9 +43,6 @@
 			</div>
 		</div>
 		<div class="row">
-			<!-- <div class="col-sm-2">
-			<button type="button" class="md-button" id="addMember" (click)="addMemebersToSpace()">Message</button>
-		</div> -->
 			<div class="col-sm-7">
 				<div class="md-input-group small-12 columns">
 					<input class="md-input" id="message" type="text" placeholder="Type your message"

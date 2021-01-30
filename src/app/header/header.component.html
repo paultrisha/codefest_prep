@@ -1,0 +1,15 @@
+<div class="row" id="headerDiv">
+	<div class="col-sm-3">
+		<div class="md-avatar md-avatar--active" title="Tom Smith">
+			<span class="md-avatar__letter">TP</span>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<span>Welcome {{userName}} !</span>
+	</div>
+	<div class="col-sm-4">
+		<button type="button" id="logout" class="md-button md-button--red" (click)="logout()">Logout</button>
+	</div>
+</div>
+<app-dialog *ngIf="showAlertMessage" [showOk]="true" [showCancel]="false" [modalMessage]="dialogMessage"
+	(okDialogEvent)="okDialogAction()"></app-dialog>
