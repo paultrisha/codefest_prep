@@ -15,15 +15,14 @@ export class WebexComponent implements OnInit {
   roomName;
   roomsPresent = [];
   memberEmail;
-  room: Room[] = [];
+  room: Room[] = [{ id: '1234', title: '--- Select a room ---' }];
   message;
   showAlertMessage = false;
   dialogMessage;
-  selectedRoomId;
+  selectedRoomId = '1234';
 
   ngOnInit() {
     const redirect_uri = `http://localhost:4200/`;
-
     this.webex = Webex.init({
       config: {
         meetings: {
@@ -38,7 +37,6 @@ export class WebexComponent implements OnInit {
       },
     });
     this.webex.once(`ready`, () => {
-      // console.log('READY', this.webex.credentials.supertoken)
       if (this.webex.credentials.supertoken) {
         localStorage.setItem(
           'access_token',
@@ -55,6 +53,7 @@ export class WebexComponent implements OnInit {
         this.userName = data.displayName;
         console.log(this.userName);
         this.loader = false;
+        console.log(this.loader);
       });
     }
   }
@@ -69,7 +68,8 @@ export class WebexComponent implements OnInit {
   }
 
   listRooms() {
-    this.webex.rooms.list({ max: 10 }).then((rooms) => {
+    this.webex.rooms.list().then((rooms) => {
+      sessionStorage.setItem('room', rooms);
       let i = 0;
       for (const item of rooms.items) {
         this.room[i] = new Room();
@@ -80,28 +80,15 @@ export class WebexComponent implements OnInit {
     });
   }
 
-  // testaddMemebersToSpace(email) {
-  // 	this.webex.rooms.create({ title: `My First Room` }).then((room) => {
-  // 		return Promise.all([
-  // 			this.webex.memberships.create({
-  // 				roomId: room.id,
-  // 				personEmail: email,
-  // 			}),
-  // 		]).then(() =>
-  // 			this.webex.messages.create({
-  // 				markdown: `**Created the space and added you using webex SDK**`,
-  // 				roomId: room.id,
-  // 			})
-  // 		);
-  // 	});
-  // }
-
   addMemebersToSpace() {
     if (this.selectedRoomId && this.memberEmail) {
       this.webex.memberships.create({
         roomId: this.selectedRoomId,
         personEmail: this.memberEmail,
       });
+      this.memberEmail = '';
+      this.showAlertMessage = true;
+      this.dialogMessage = 'Member added !';
     } else {
       this.showAlertMessage = true;
       this.dialogMessage = 'Please select room & enter member email Id';
@@ -114,6 +101,9 @@ export class WebexComponent implements OnInit {
         markdown: this.message,
         roomId: this.selectedRoomId,
       });
+      this.message = '';
+      this.showAlertMessage = true;
+      this.dialogMessage = 'Message sent !';
     } else {
       this.showAlertMessage = true;
       this.dialogMessage = 'Please select room & enter message to be send';

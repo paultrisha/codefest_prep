@@ -3,7 +3,7 @@
 </div>
 
 <div class="container">
-	<div class="row">
+	<div class="row" id="headerDiv">
 		<div class="col-sm-3">
 			<div class="md-avatar md-avatar--active" title="Tom Smith">
 				<span class="md-avatar__letter">TP</span>
@@ -14,56 +14,62 @@
 			<button type="button" id="logout" class="md-button md-button--red" (click)="logout()">Logout</button>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-7">
-			<div class="md-input-group small-9 columns">
-				<input class="md-input" id="roomName" type="text" placeholder="Enter room name" [(ngModel)]="roomName">
+	<div id="contentDiv">
+		<div class="row">
+			<div class="col-sm-7">
+				<div class="md-input-group small-12 columns">
+					<input class="md-input" id="roomName" type="text" placeholder="Enter room name"
+						[(ngModel)]="roomName">
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<button id="createRoom" class="md-button md-button--blue" (click)="createRoom()">Create Room</button>
 			</div>
 		</div>
-		<div class="col-sm-2">
-			<button id="createRoom" class="md-button md-button--blue" (click)="createRoom()">Create Room</button>
+		<div class="row">
+			<!-- <label id="selectRoom" class="md-label" for="normalInput">Select Room</label> -->
+			<div class="col-sm-7">
+				<select id="webexRooms" class="browser-default custom-select" name="space" [(ngModel)]="selectedRoomId"
+					#space="ngModel">
+					<option *ngFor="let rooms of room" [value]="rooms.id">{{rooms.title}}
+					</option>
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<button type="button" class="md-button md-button--blue" id="listRoom" (click)="listRooms()">List
+					Room</button>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<!-- <label id="selectRoom" class="md-label" for="normalInput">Select Room</label> -->
-		<div class="col-sm-2">
-			<button type="button" class="md-button" id="listRoom" (click)="listRooms()">List Room</button>
-		</div>
-		<div class="col-sm-7">
-			<select id="webexRooms" class="browser-default custom-select" name="space" [(ngModel)]="selectedRoomId"
-				#space="ngModel">
-				<option *ngFor="let rooms of room" [value]="rooms.id">{{rooms.title}}
-				</option>
-			</select>
-		</div>
-	</div>
-	<div class="row">
-		<!-- <div class="col-sm-2">
+		<div class="row">
+			<!-- <div class="col-sm-2">
 			<label id="addMemebers" class="md-label" for="normalInput">Add members</label>
 		</div> -->
-		<div class="col-sm-7">
-			<div class="md-input-group small-9 columns">
-				<input class="md-input" id="memberEmail" type="text" placeholder="Enter member email id"
-					[(ngModel)]="memberEmail">
+			<div class="col-sm-7">
+				<div class="md-input-group small-12 columns">
+					<input class="md-input" id="memberEmail" type="text" placeholder="Enter member email id"
+						[(ngModel)]="memberEmail">
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<button type="button" class="md-button md-button--blue" id="addMember"
+					(click)="addMemebersToSpace()">Add
+					Member</button>
 			</div>
 		</div>
-		<div class="col-sm-2">
-			<button type="button" class="md-button md-button--blue" id="addMember" (click)="addMemebersToSpace()">Add
-				Member</button>
-		</div>
-	</div>
-	<div class="row">
-		<!-- <div class="col-sm-2">
+		<div class="row">
+			<!-- <div class="col-sm-2">
 			<button type="button" class="md-button" id="addMember" (click)="addMemebersToSpace()">Message</button>
 		</div> -->
-		<div class="col-sm-7">
-			<div class="md-input-group small-9 columns">
-				<input class="md-input" id="message" type="text" placeholder="Type your message" [(ngModel)]="message">
+			<div class="col-sm-7">
+				<div class="md-input-group small-12 columns">
+					<input class="md-input" id="message" type="text" placeholder="Type your message"
+						[(ngModel)]="message">
+				</div>
 			</div>
-		</div>
-		<div class="col-sm-2">
-			<button type="button" class="md-button md-button--blue" id="sendMessage"
-				(click)="sendMessageToSpace()">Send</button>
+			<div class="col-sm-2">
+				<button type="button" class="md-button md-button--blue" id="sendMessage"
+					(click)="sendMessageToSpace()">Send</button>
+			</div>
 		</div>
 	</div>
 </div>
