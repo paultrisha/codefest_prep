@@ -8,9 +8,9 @@
     "test": "ng test",
     "test-headless": "ng test --watch=false --browsers=ChromiumHeadlessNoSandbox",
     "lint": "ng lint",
-	"e2e": "ng e2e",
-	"cypress:open": "cypress open",
-	"cypress:headless": "cypress run --config screenshotOnRunFailure=false,video=false"
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:headless": "cypress run --config screenshotOnRunFailure=false,video=false"
   },
   "private": true,
   "dependencies": {

@@ -20,6 +20,8 @@ export class WebexComponent implements OnInit {
   showAlertMessage = false;
   dialogMessage;
   selectedRoomId = '1234';
+  webexSpace = false;
+  result;
 
   ngOnInit() {
     this.webexService.beforeLogin();
@@ -49,15 +51,25 @@ export class WebexComponent implements OnInit {
       }
       this.selectedRoomId = this.room[0].id;
       this.loader = false;
+      this.webexSpace = true;
     });
   }
 
   addMemebersToSpace() {
     if (this.selectedRoomId && this.memberEmail) {
-      this.webexService.addMember(this.selectedRoomId, this.memberEmail);
-      this.memberEmail = '';
-      this.showAlertMessage = true;
-      this.dialogMessage = 'Member added !';
+      this.result = this.webexService.addMember(
+        this.selectedRoomId,
+        this.memberEmail
+      );
+      if ((this.result = 'error occured')) {
+        this.memberEmail = '';
+        this.showAlertMessage = true;
+        this.dialogMessage = 'Conversation already has maximum number of participants';
+      } else {
+        this.memberEmail = '';
+        this.showAlertMessage = true;
+        this.dialogMessage = 'Member added !';
+      }
     } else {
       this.showAlertMessage = true;
       this.dialogMessage = 'Please select room & enter member email Id';

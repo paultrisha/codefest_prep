@@ -11,7 +11,8 @@ export class HeaderComponent implements OnInit {
 
   showAlertMessage = false;
   dialogMessage;
-  userName = null;
+  userName = '';
+  userInitials = '';
 
   ngOnInit() {
     this.dialogMessage = 'Welcome to Webex !';
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
   okDialogAction() {
     this.webexService.getLoginUserDetail().then((data) => {
       this.userName = data.displayName;
+      this.userInitials = data.firstName.charAt(0) + data.lastName.charAt(0);
     });
     this.showAlertMessage = false;
   }
