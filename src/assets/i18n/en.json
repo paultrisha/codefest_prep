@@ -1,0 +1,20 @@
+{
+	"HEADER": {
+		"WELCOME": "Welcome",
+		"LOGOUT": "Logout"
+	},
+	"DIALOG": {
+		"CANCEL": "Cancel",
+		"OK": "Ok"
+	},
+	"WEBEX": {
+		"CREATEROOM": "Create Room",
+		"LOADCONTACTS": "Load Contacts",
+		"ADDMEMBER": "Add Member",
+		"SEND": "Send",
+		"MESSAGEINFO": "Type your message",
+		"ADDMEMBERINFO": "Enter member email id",
+		"CREATEROOMINFO": "Enter room name"
+	}
+
+}

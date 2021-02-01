@@ -1,11 +1,15 @@
 # CodefestPrep
 
 The webapp is created as a part of Codefest 2021 Preparatory task. The webapp is a simple app created with Webex SDKs which allow the user to do the following:
-* Login to webex
-* Create a webex space/room
-* Add memeber to the selected space
-* Send a message to the selected space
-* Logout
+* [Login to webex]()
+* [Create a webex space/room]()
+* [Add memeber to the selected space]()
+* [Send a message to the selected space]()
+* [Logout]()
+
+## Technologies Overview
+
+This project is built using Angular (8.x), [Momentum UI](https://momentum.design/components/overview) & [Webex SDK](https://developer.webex.com/docs/sdks/browser).
 
 ## Development server
 
@@ -17,21 +21,29 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng generate service service-name` to generate a new service.
 
+## Localisation/Internationalisation
+
+The webapp supports internationalisation, currently English(en) has been set as the default language. Going forward we can invlove other languages by adding json files with the translated words under assets/i18n folder.
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running lint checks
+## Testing Info
 
-Run `ng lint` to check if there is any lint failures
-
-## Running unit tests
+### Unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+### End-to-End tests
 
 Run `npm run cypress:headless` to execute the end-to-end tests in headless mode via [Cypress](https://www.cypress.io/).
+
+## Code styling
+
+### Lint checks
+
+Run `ng lint` to check if there is any lint failures
 
 ## Further help
 

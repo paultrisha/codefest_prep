@@ -7,17 +7,16 @@
 		<div class="row">
 			<div class="col-sm-7">
 				<div class="md-input-group small-12 columns">
-					<input class="md-input" id="roomName" type="text" placeholder="Enter room name"
+					<input class="md-input" id="roomName" type="text" placeholder="{{ 'WEBEX.CREATEROOMINFO' | translate }}"
 						[(ngModel)]="roomName">
 				</div>
 			</div>
 			<div class="col-sm-2">
-				<button id="createRoom" class="md-button md-button--blue" (click)="createRoom()">Create Room</button>
+				<button id="createRoom" class="md-button md-button--blue" (click)="createRoom()">{{ 'WEBEX.CREATEROOM' | translate }}</button>
 			</div>
 		</div>
 		<div class="row">
-				<button type="button" class="md-button md-button--blue" id="listRoom" (click)="listRooms()">Load
-					Contacts</button>
+				<button type="button" class="md-button md-button--blue" id="listRoom" (click)="listRooms()">{{ 'WEBEX.LOADCONTACTS' | translate }}</button>
 		</div>
 		<div *ngIf="webexSpace">
 			<div class="row">
@@ -33,26 +32,25 @@
 			<div class="row">
 				<div class="col-sm-7">
 					<div class="md-input-group small-12 columns">
-						<input class="md-input" id="memberEmail" type="email" placeholder="Enter member email id"
+						<input class="md-input" id="memberEmail" type="email" placeholder="{{ 'WEBEX.ADDMEMBERINFO' | translate }}"
 							[(ngModel)]="memberEmail">
 					</div>
 				</div>
 				<div class="col-sm-2">
 					<button type="button" class="md-button md-button--blue" id="addMember"
-						(click)="addMemebersToSpace()">Add
-						Member</button>
+						(click)="addMemebersToSpace()">{{ 'WEBEX.ADDMEMBER' | translate }}</button>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-7">
 					<div class="md-input-group small-12 columns">
-						<input class="md-input" id="message" type="text" placeholder="Type your message"
+						<input class="md-input" id="message" type="text" placeholder="{{ 'WEBEX.MESSAGEINFO' | translate }}"
 							[(ngModel)]="message">
 					</div>
 				</div>
 				<div class="col-sm-2">
 					<button type="button" class="md-button md-button--blue" id="sendMessage"
-						(click)="sendMessageToSpace()">Send</button>
+						(click)="sendMessageToSpace()">{{ 'WEBEX.SEND' | translate }}</button>
 				</div>
 			</div>
 		</div>
