@@ -1,15 +1,15 @@
-# CodefestPrep
+# WebexApp
 
-The webapp is created as a part of Codefest 2021 Preparatory task. The webapp is a simple app created with Webex SDKs which allow the user to do the following:
-* [Login to webex]()
-* [Create a webex space/room]()
-* [Add memeber to the selected space]()
-* [Send a message to the selected space]()
-* [Logout]()
+The project is created as a part of Codefest 2021 Preparatory task. It is a simple app created with Webex SDKs which allows the user to do the following:
+* [Login to webex](docs/login/README.md)
+* [Create a webex space/room](docs/createroom/README.md)
+* [Add memeber to the selected space](docs/addmember/README.md)
+* [Send a message to the selected space](docs/sendmessage/README.md)
+* [Logout](docs/logout/README.md)
 
 ## Technologies Overview
 
-This project is built using Angular (8.x), [Momentum UI](https://momentum.design/components/overview) & [Webex SDK](https://developer.webex.com/docs/sdks/browser).
+This project is built using Angular (8.x), [Momentum UI](https://momentum.design/components/overview) & [Webex SDKs](https://developer.webex.com/docs/sdks/browser).
 
 ## Development server
 
@@ -23,7 +23,7 @@ Run `ng generate service service-name` to generate a new service.
 
 ## Localisation/Internationalisation
 
-The webapp supports internationalisation, currently English(en) has been set as the default language. Going forward we can invlove other languages by adding json files with the translated words under assets/i18n folder.
+The webapp supports internationalisation, currently English(en) has been set as the default language. Going forward we can invlove other languages by adding json files with the translated words under `assets/i18n` folder.
 
 ## Build
 
