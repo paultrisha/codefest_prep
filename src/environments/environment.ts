@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  REDIRECTURL : 'http://localhost:4200/',
+  CLIENTID : 'C9535bae245754ff496bd1756819c905fc8462f0f7398ef89079d1a8445c1612c',
+  SCOPE : 'spark:all spark:kms'
 };
 
 /*

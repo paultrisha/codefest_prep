@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import Webex from 'webex';
 
 @Injectable({
@@ -10,17 +11,15 @@ export class WebexService {
   webex;
 
   beforeLogin() {
-    const redirect_uri = `http://localhost:4200/`;
     this.webex = Webex.init({
       config: {
         meetings: {
           deviceType: 'WEB',
         },
         credentials: {
-          client_id:
-            'C9535bae245754ff496bd1756819c905fc8462f0f7398ef89079d1a8445c1612c',
-          redirect_uri: redirect_uri,
-          scope: 'spark:all spark:kms',
+          client_id: environment.CLIENTID,
+          redirect_uri: environment.REDIRECTURL,
+          scope: environment.SCOPE,
         },
       },
     });
