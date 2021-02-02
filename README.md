@@ -1,11 +1,11 @@
 # WebexApp
 
 The project is created as a part of Codefest 2021 Preparatory task. It is a simple app created with Webex SDKs which allows the user to do the following:
-* [Login to webex](docs/login/README.md)
-* [Create a webex space/room](docs/createroom/README.md)
-* [Add memeber to the selected space](docs/addmember/README.md)
-* [Send a message to the selected space](docs/sendmessage/README.md)
-* [Logout](docs/logout/README.md)
+* [Login to webex](src/assets/docs/login/README.md)
+* [Create a webex space/room](src/assets/docs/createroom/README.md)
+* [Add memeber to the selected space](src/assets/docs/addmember/README.md)
+* [Send a message to the selected space](src/assets/docs/sendmessage/README.md)
+* [Logout](src/assets/docs/logout/README.md)
 
 ## Technologies Overview
 
