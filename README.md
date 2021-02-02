@@ -26,7 +26,7 @@ Run `ng generate service service-name` to generate a new service.
 The webapp supports internationalisation, currently English(en) has been set as the default language. Going forward we can invlove other languages by adding json files with the translated words under `assets/i18n` folder.
 
 <p align="center">
-    <img src="i18n.png" height="200px" alt="i18n" />
+    <img src="src/assets/images/i18n.png" height="200px" alt="i18n" />
 </p>
 
 ## Build
@@ -40,7 +40,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 <p align="center">
-    <img src="uiTest.png" height="200px" alt="test" />
+    <img src="src/assets/images/uiTest.png" height="200px" alt="test" />
 </p>
 
 ### End-to-End tests
@@ -54,7 +54,7 @@ Run `npm run cypress:headless` to execute the end-to-end tests in headless mode 
 Run `ng lint` to check if there is any lint failures
 
 <p align="center">
-    <img src="lint.png" height="200px" alt="lint" />
+    <img src="src/assets/images/lint.png" height="200px" alt="lint" />
 </p>
 
 ## Further help
