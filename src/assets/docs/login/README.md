@@ -1,4 +1,4 @@
-## Login
+## Login to webex
 
 To login to the WebexApp use your cec credentials as shown in the screenshot below.
 
@@ -12,7 +12,7 @@ After successful login, the welcome message is displayed as show below
     <img src="welcome.png" height="400px" alt="Welcome" />
 </p>
 
-Click on the "Ok" button of the dialog box and in the header menu, the logged in user name is shown and the avatar with the initails
+Click on the `Ok` button of the dialog box and in the header menu, the logged in user name and the avatar with the initails is shown
 
 <p align="center">
     <img src="home.png" height="400px" alt="Home" />

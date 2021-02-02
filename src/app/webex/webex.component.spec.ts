@@ -7,6 +7,20 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { Room } from '../models/room.model';
+import {
+  USE_DEFAULT_LANG,
+  USE_STORE,
+  USE_EXTEND,
+  DEFAULT_LANGUAGE,
+  TranslateService,
+  TranslateStore,
+  TranslateLoader,
+  TranslateCompiler,
+  TranslateParser,
+  MissingTranslationHandler,
+  TranslateModule,
+  FakeMissingTranslationHandler,
+} from '@ngx-translate/core';
 
 describe('WebexComponent', () => {
   let component: WebexComponent;
@@ -14,10 +28,24 @@ describe('WebexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, BrowserModule, AppRoutingModule],
+      imports: [FormsModule, BrowserModule, AppRoutingModule, TranslateModule],
       declarations: [WebexComponent, DialogComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [],
+      providers: [
+        { provide: USE_DEFAULT_LANG },
+        { provide: USE_STORE },
+        { provide: USE_EXTEND },
+        { provide: DEFAULT_LANGUAGE },
+        {
+          provide: MissingTranslationHandler,
+          useClass: FakeMissingTranslationHandler,
+        },
+        TranslateService,
+        TranslateStore,
+        TranslateLoader,
+        TranslateCompiler,
+        TranslateParser,
+      ],
     }).compileComponents();
   }));
 
@@ -34,23 +62,33 @@ describe('WebexComponent', () => {
   it('Webex app should contain the input boxes and buttons', () => {
     fixture = TestBed.createComponent(WebexComponent);
     component = fixture.componentInstance;
-    component.room[0] = new Room();
-    component.room[0].id = '12345';
-    component.room[0].title = 'My test room';
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       fixture.detectChanges();
       const compiled = fixture.debugElement.nativeElement;
       expect(compiled.querySelector('#createRoom').textContent).toEqual(
-        'Create Room'
+        'WEBEX.CREATEROOM'
       );
+    });
+  });
+
+  it('it should display the send message & add member after contacts are loaded', () => {
+    fixture = TestBed.createComponent(WebexComponent);
+    component = fixture.componentInstance;
+    component.room[0] = new Room();
+    component.room[0].id = '12345';
+    component.room[0].title = 'My test room';
+    component.webexSpace = true;
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
       expect(compiled.querySelector('#addMember').textContent).toEqual(
-        'Add Member'
+        'WEBEX.ADDMEMBER'
       );
       expect(compiled.querySelector('#sendMessage').textContent).toEqual(
-        'Send'
+        'WEBEX.SEND'
       );
-      expect(compiled.querySelector('#logout').textContent).toEqual('Logout');
       expect(compiled.querySelector('#webexRooms').textContent).toEqual(
         'My test room '
       );

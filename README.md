@@ -3,8 +3,8 @@
 The project is created as a part of Codefest 2021 Preparatory task. It is a simple app created with Webex SDKs which allows the user to do the following:
 * [Login to webex](src/assets/docs/login/README.md)
 * [Create a webex space/room](src/assets/docs/createroom/README.md)
-* [Add memeber to the selected space](src/assets/docs/addmember/README.md)
-* [Send a message to the selected space](src/assets/docs/sendmessage/README.md)
+* [Add memeber to space](src/assets/docs/addmember/README.md)
+* [Send a message to your contact](src/assets/docs/sendmessage/README.md)
 * [Logout](src/assets/docs/logout/README.md)
 
 ## Technologies Overview
@@ -25,6 +25,10 @@ Run `ng generate service service-name` to generate a new service.
 
 The webapp supports internationalisation, currently English(en) has been set as the default language. Going forward we can invlove other languages by adding json files with the translated words under `assets/i18n` folder.
 
+<p align="center">
+    <img src="i18n.png" height="200px" alt="i18n" />
+</p>
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
@@ -35,6 +39,10 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+<p align="center">
+    <img src="uiTest.png" height="200px" alt="test" />
+</p>
+
 ### End-to-End tests
 
 Run `npm run cypress:headless` to execute the end-to-end tests in headless mode via [Cypress](https://www.cypress.io/).
@@ -44,6 +52,10 @@ Run `npm run cypress:headless` to execute the end-to-end tests in headless mode 
 ### Lint checks
 
 Run `ng lint` to check if there is any lint failures
+
+<p align="center">
+    <img src="lint.png" height="200px" alt="lint" />
+</p>
 
 ## Further help
 
