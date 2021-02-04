@@ -28,6 +28,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "core-js": "^2.5.4",
     "cypress": "^6.3.0",
+    "ngx-logger": "^4.1.9",
     "node-sass": "^4.14.1",
     "puppeteer": "^1.20.0",
     "rxjs": "~6.3.3",

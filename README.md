@@ -11,7 +11,11 @@ The project is created as a part of Codefest 2021 Preparatory task. It is a simp
 
 This project is built using Angular (8.x), [Momentum UI](https://momentum.design/components/overview) & [Webex SDKs](https://developer.webex.com/docs/sdks/browser).
 
-## Development server
+## Setup
+
+Run `npm install` to install the dependencies.
+
+### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -23,7 +27,7 @@ Run `ng generate service service-name` to generate a new service.
 
 ## Localisation/Internationalisation
 
-The webapp supports internationalisation, currently English(en) has been set as the default language. Going forward we can invlove other languages by adding json files with the translated words under `assets/i18n` folder.
+The webapp supports [Internalization](http://www.ngx-translate.com/), currently English(en) has been set as the default language. Going forward we can invlove other languages by adding json files with the translated words under `assets/i18n` folder.
 
 <p align="center">
     <img src="src/assets/images/i18n.png" height="200px" alt="i18n" />
@@ -57,6 +61,10 @@ Run `ng lint` to check if there is any lint failures
     <img src="src/assets/images/lint.png" height="200px" alt="lint" />
 </p>
 
+## Logging
+
+[NGX Logger](https://www.npmjs.com/package/ngx-logger) has been used as the logging module for angular webapp. It allows "pretty print" to the console, as well as allowing log messages to be POSTed to a URL(`/api/logs`) for server-side logging.
+
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

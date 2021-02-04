@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 import Webex from 'webex';
 import { Room } from '../models/room.model';
 import { WebexService } from '../services/webex.service';
@@ -8,7 +9,7 @@ import { WebexService } from '../services/webex.service';
   styleUrls: ['./webex.component.scss'],
 })
 export class WebexComponent implements OnInit {
-  constructor(private webexService: WebexService) {}
+  constructor(private webexService: WebexService, private logger: NGXLogger) {}
 
   loader = false;
   webex;
@@ -33,9 +34,11 @@ export class WebexComponent implements OnInit {
       this.roomName = '';
       this.showAlertMessage = true;
       this.dialogMessage = 'Room created !';
+      this.logger.debug('New room created!');
     } else {
       this.showAlertMessage = true;
       this.dialogMessage = 'Please enter room name';
+      this.logger.debug('Bad request for room creation');
     }
   }
 
@@ -64,15 +67,19 @@ export class WebexComponent implements OnInit {
       if ((this.result = 'error occured')) {
         this.memberEmail = '';
         this.showAlertMessage = true;
-        this.dialogMessage = 'Conversation already has maximum number of participants';
+        this.dialogMessage =
+          'Conversation already has maximum number of participants';
+        this.logger.debug('Error occurred while adding member');
       } else {
         this.memberEmail = '';
         this.showAlertMessage = true;
         this.dialogMessage = 'Member added !';
+        this.logger.debug('Member added successfully!');
       }
     } else {
       this.showAlertMessage = true;
       this.dialogMessage = 'Please select room & enter member email Id';
+      this.logger.debug('Bad request for adding memeber');
     }
   }
 
@@ -82,9 +89,11 @@ export class WebexComponent implements OnInit {
       this.message = '';
       this.showAlertMessage = true;
       this.dialogMessage = 'Message sent !';
+      this.logger.debug('Meesage sent!');
     } else {
       this.showAlertMessage = true;
       this.dialogMessage = 'Please select room & enter message to be send';
+      this.logger.debug('Bad request for sending message');
     }
   }
 

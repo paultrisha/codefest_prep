@@ -21,12 +21,15 @@ export class WebexService {
           redirect_uri: environment.REDIRECTURL,
           scope: environment.SCOPE,
         },
+        logger: {
+          level: 'info',
+        },
       },
     });
     this.listenForWebex();
   }
 
-  async listenForWebex() {
+  listenForWebex() {
     this.webex.once(`ready`, () => {
       if (this.webex.credentials.supertoken) {
         localStorage.setItem(

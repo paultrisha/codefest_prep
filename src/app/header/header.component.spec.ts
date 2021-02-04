@@ -1,3 +1,4 @@
+import { HttpBackend } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +18,7 @@ import {
   FakeMissingTranslationHandler,
   TranslateModuleConfig,
 } from '@ngx-translate/core';
+import { LoggerConfig, LoggerModule, NGXLoggerHttpService } from 'ngx-logger';
 import { AppRoutingModule } from '../app-routing.module';
 import { DialogComponent } from '../dialog/dialog.component';
 
@@ -28,7 +30,13 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, BrowserModule, AppRoutingModule, TranslateModule],
+      imports: [
+        FormsModule,
+        BrowserModule,
+        AppRoutingModule,
+        TranslateModule,
+        LoggerModule,
+      ],
       declarations: [HeaderComponent, DialogComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
@@ -45,6 +53,9 @@ describe('HeaderComponent', () => {
         TranslateLoader,
         TranslateCompiler,
         TranslateParser,
+        NGXLoggerHttpService,
+        HttpBackend,
+        LoggerConfig,
       ],
     }).compileComponents();
   }));
@@ -66,7 +77,9 @@ describe('HeaderComponent', () => {
     fixture.whenStable().then(() => {
       fixture.detectChanges();
       const compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('#logout').textContent).toEqual('HEADER.LOGOUT');
+      expect(compiled.querySelector('#logout').textContent).toEqual(
+        'HEADER.LOGOUT'
+      );
     });
   });
 });

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 import { WebexService } from '../services/webex.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { WebexService } from '../services/webex.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private webexService: WebexService) {}
+  constructor(private webexService: WebexService, private logger: NGXLogger) {}
 
   showAlertMessage = false;
   dialogMessage;
@@ -20,11 +21,13 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.logger.debug('User logged out!');
     this.webexService.logout();
   }
 
   okDialogAction() {
     this.webexService.getLoginUserDetail().then((data) => {
+      this.logger.debug('User details fetched!');
       this.userName = data.displayName;
       this.userInitials = data.firstName.charAt(0) + data.lastName.charAt(0);
     });

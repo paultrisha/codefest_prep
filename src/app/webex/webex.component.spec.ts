@@ -21,6 +21,8 @@ import {
   TranslateModule,
   FakeMissingTranslationHandler,
 } from '@ngx-translate/core';
+import { LoggerConfig, LoggerModule, NGXLoggerHttpService } from 'ngx-logger';
+import { HttpBackend } from '@angular/common/http';
 
 describe('WebexComponent', () => {
   let component: WebexComponent;
@@ -28,7 +30,13 @@ describe('WebexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, BrowserModule, AppRoutingModule, TranslateModule],
+      imports: [
+        FormsModule,
+        BrowserModule,
+        AppRoutingModule,
+        TranslateModule,
+        LoggerModule,
+      ],
       declarations: [WebexComponent, DialogComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
@@ -45,6 +53,9 @@ describe('WebexComponent', () => {
         TranslateLoader,
         TranslateCompiler,
         TranslateParser,
+        NGXLoggerHttpService,
+        HttpBackend,
+        LoggerConfig,
       ],
     }).compileComponents();
   }));
