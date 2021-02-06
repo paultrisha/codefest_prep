@@ -9,7 +9,7 @@ The project is created as a part of Codefest 2021 Preparatory task. It is a simp
 
 ## Technologies Overview
 
-This project is built using Angular (8.x), [Momentum UI](https://momentum.design/components/overview) & [Webex SDKs](https://developer.webex.com/docs/sdks/browser).
+This project is built using Angular (7.x), [Momentum UI](https://momentum.design/components/overview) & [Webex SDKs](https://developer.webex.com/docs/sdks/browser).
 
 ## Setup
 
