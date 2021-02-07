@@ -64,7 +64,7 @@ export class WebexComponent implements OnInit {
         this.selectedRoomId,
         this.memberEmail
       );
-      if ((this.result = 'error occured')) {
+      if ((this.result == 'error occured')) {
         this.memberEmail = '';
         this.showAlertMessage = true;
         this.dialogMessage =

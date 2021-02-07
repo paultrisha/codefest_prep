@@ -58,10 +58,12 @@ export class WebexService {
       .create({
         roomId: selectedRoomId,
         personEmail: memberEmail,
-      })
-      .catch((data) => {
-        return 'error occured';
-      });
+      }).then ((data => {
+		console.log(data);
+		if (data.includes('POST failed')){
+			return 'error occured';
+		}
+	  }));
   }
 
   async getLoginUserDetail() {
