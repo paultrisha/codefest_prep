@@ -54,16 +54,11 @@ export class WebexService {
   }
 
   async addMember(selectedRoomId, memberEmail) {
-    this.webex.memberships
+   return this.webex.memberships
       .create({
         roomId: selectedRoomId,
         personEmail: memberEmail,
-      }).then ((data => {
-		console.log(data);
-		if (data.includes('POST failed')){
-			return 'error occured';
-		}
-	  }));
+      });
   }
 
   async getLoginUserDetail() {

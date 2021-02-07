@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
-import Webex from 'webex';
 import { Room } from '../models/room.model';
 import { WebexService } from '../services/webex.service';
 @Component({
@@ -30,11 +29,23 @@ export class WebexComponent implements OnInit {
 
   createRoom() {
     if (this.roomName) {
-      this.webexService.createRoom(this.roomName);
-      this.roomName = '';
-      this.showAlertMessage = true;
-      this.dialogMessage = 'Room created !';
-      this.logger.debug('New room created!');
+      this.loader = true;
+      this.webexService
+        .createRoom(this.roomName)
+        .then((data) => {
+          this.loader = false;
+          this.roomName = '';
+          this.showAlertMessage = true;
+          this.dialogMessage = 'Room created !';
+          this.logger.debug('New room created!');
+        })
+        .catch((data) => {
+          this.loader = false;
+          this.roomName = '';
+          this.showAlertMessage = true;
+          this.dialogMessage = 'Error occurred ! Please try again';
+          this.logger.debug('Error occurred while creating room');
+        });
     } else {
       this.showAlertMessage = true;
       this.dialogMessage = 'Please enter room name';
@@ -60,22 +71,35 @@ export class WebexComponent implements OnInit {
 
   addMemebersToSpace() {
     if (this.selectedRoomId && this.memberEmail) {
-      this.result = this.webexService.addMember(
-        this.selectedRoomId,
-        this.memberEmail
-      );
-      if ((this.result == 'error occured')) {
-        this.memberEmail = '';
-        this.showAlertMessage = true;
-        this.dialogMessage =
-          'Conversation already has maximum number of participants';
-        this.logger.debug('Error occurred while adding member');
-      } else {
-        this.memberEmail = '';
-        this.showAlertMessage = true;
-        this.dialogMessage = 'Member added !';
-        this.logger.debug('Member added successfully!');
-      }
+      this.loader = true;
+      this.webexService
+        .addMember(this.selectedRoomId, this.memberEmail)
+        .then((data) => {
+          this.loader = false;
+          this.memberEmail = '';
+          this.showAlertMessage = true;
+          this.dialogMessage = 'Member added !';
+          this.logger.debug('Member added successfully!');
+        })
+        .catch((data) => {
+          this.loader = false;
+          if (
+            data.message.includes(
+              '1:1 conversation already has the maximum number of participants'
+            )
+          ) {
+            this.memberEmail = '';
+            this.showAlertMessage = true;
+            this.dialogMessage =
+              'Conversation already has maximum number of participants';
+            this.logger.debug('Error occurred while adding member');
+          } else {
+            this.memberEmail = '';
+            this.showAlertMessage = true;
+            this.dialogMessage = 'Error occurred ! Please enter valid email id';
+            this.logger.debug('Error occurred while adding member');
+          }
+        });
     } else {
       this.showAlertMessage = true;
       this.dialogMessage = 'Please select room & enter member email Id';
@@ -85,11 +109,23 @@ export class WebexComponent implements OnInit {
 
   sendMessageToSpace() {
     if (this.selectedRoomId && this.message) {
-      this.webexService.sendMessage(this.message, this.selectedRoomId);
-      this.message = '';
-      this.showAlertMessage = true;
-      this.dialogMessage = 'Message sent !';
-      this.logger.debug('Meesage sent!');
+      this.loader = true;
+      this.webexService
+        .sendMessage(this.message, this.selectedRoomId)
+        .then((data) => {
+          this.loader = false;
+          this.message = '';
+          this.showAlertMessage = true;
+          this.dialogMessage = 'Message sent !';
+          this.logger.debug('Meesage sent!');
+        })
+        .catch((data) => {
+          this.loader = false;
+          this.message = '';
+          this.showAlertMessage = true;
+          this.dialogMessage = 'Error occurred ! Please try again';
+          this.logger.debug('Error occurred while sending message member');
+        });
     } else {
       this.showAlertMessage = true;
       this.dialogMessage = 'Please select room & enter message to be send';

@@ -37,3 +37,15 @@ If you click on the `Add Member` button without entering any email id in the inp
 <p align="center">
     <img src="addmemberalert.png" height="400px" alt="add member alert" />
 </p>
+
+If you are trying to add member to 1:1 contact space an alert dialog box pops up on the screen as member cannot be added to a 1:1 contact
+
+<p align="center">
+    <img src="maxconv.png" height="400px" alt="no memnber addition in 1:1" />
+</p>
+
+If there is any invalid input entered in the add member input box an alert dialog box pops up on the screen
+
+<p align="center">
+    <img src="erroroccured.png" height="400px" alt="error occured" />
+</p>
