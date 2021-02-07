@@ -1,6 +1,6 @@
 ## Add memeber to space
 
-To add a member to a space, click on the `Load Contacts` button if the contacts menu and the add member input box is not dispalyed.
+To add a member to a space, click on the `Load Contacts` button if the contacts menu and the add member input box is not displayed.
 
 <p align="center">
     <img src="home.png" height="400px" alt="home" />

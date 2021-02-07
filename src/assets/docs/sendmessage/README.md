@@ -1,6 +1,6 @@
 ## Send a message to your contact
 
-To send a message to your contacts, click on the `Load Contacts` button if the contacts menu and the send message input box is not dispalyed.
+To send a message to your contacts, click on the `Load Contacts` button if the contacts menu and the send message input box is not displayed.
 
 <p align="center">
     <img src="home.png" height="400px" alt="home" />
@@ -35,5 +35,5 @@ Click on the `Ok` button of the dialog box to go back to the main page
 If you click on the `Send` button without typing any message in the input box an alert dialog box pops up on the screen
 
 <p align="center">
-    <img src="sentmessagealert.png" height="400px" alt="send message alert" />
+    <img src="sendmessagealert.png" height="400px" alt="send message alert" />
 </p>
