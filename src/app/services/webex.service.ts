@@ -29,7 +29,7 @@ export class WebexService {
     this.listenForWebex();
   }
 
-  listenForWebex() {
+  async listenForWebex() {
     this.webex.once(`ready`, () => {
       if (this.webex.credentials.supertoken) {
         localStorage.setItem(
@@ -43,11 +43,11 @@ export class WebexService {
   }
 
   async createRoom(roomName) {
-    this.webex.rooms.create({ title: roomName });
+    return this.webex.rooms.create({ title: roomName });
   }
 
   async sendMessage(message, selectedRoomId) {
-    this.webex.messages.create({
+    return this.webex.messages.create({
       markdown: message,
       roomId: selectedRoomId,
     });

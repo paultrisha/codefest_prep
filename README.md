@@ -65,6 +65,10 @@ Run `ng lint` to check if there is any lint failures
 
 [NGX Logger](https://www.npmjs.com/package/ngx-logger) has been used as the logging module for angular webapp. It allows "pretty print" to the console, as well as allowing log messages to be POSTed to a URL(`/api/logs`) for server-side logging.
 
+## Error handling
+
+Proper checks are made to catch the error scenarios while invoking webex SDKs. If there is some error, the same is logged using [NGX Logger](https://www.npmjs.com/package/ngx-logger) & the user is alerted with appropriate message in the dialog box.
+
 ## Further help
 
 * To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
