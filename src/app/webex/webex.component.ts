@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
+import { Message } from '../models/message.model';
 import { Room } from '../models/room.model';
 import { WebexService } from '../services/webex.service';
 @Component({
@@ -22,9 +23,13 @@ export class WebexComponent implements OnInit {
   selectedRoomId = '1234';
   webexSpace = false;
   result;
+  messages: Message[] = [];
+  showMessageTab = false;
 
   ngOnInit() {
+    this.loader = true;
     this.webexService.beforeLogin();
+    this.loader = false;
   }
 
   createRoom() {
@@ -131,6 +136,27 @@ export class WebexComponent implements OnInit {
       this.dialogMessage = 'Please select room & enter message to be send';
       this.logger.debug('Bad request for sending message');
     }
+  }
+
+  loadMessages() {
+    this.loader = true;
+    this.messages = [];
+    this.webexService.listMessage(this.selectedRoomId).then((messages) => {
+      let i = 0;
+      for (const item of messages.items) {
+        this.messages[i] = new Message();
+        this.messages[i].personEmail = item.personEmail;
+        this.messages[i].created = item.created;
+        this.messages[i].text = item.text;
+        i++;
+      }
+      this.loader = false;
+      this.showMessageTab = true;
+    });
+  }
+
+  onSpaceClose() {
+    this.showMessageTab = false;
   }
 
   okDialogAction() {

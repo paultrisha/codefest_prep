@@ -54,11 +54,10 @@ export class WebexService {
   }
 
   async addMember(selectedRoomId, memberEmail) {
-   return this.webex.memberships
-      .create({
-        roomId: selectedRoomId,
-        personEmail: memberEmail,
-      });
+    return this.webex.memberships.create({
+      roomId: selectedRoomId,
+      personEmail: memberEmail,
+    });
   }
 
   async getLoginUserDetail() {
@@ -67,6 +66,10 @@ export class WebexService {
 
   async listRoom() {
     return this.webex.rooms.list();
+  }
+
+  async listMessage(roomId) {
+    return this.webex.messages.list({ roomId: roomId });
   }
 
   logout() {

@@ -7,33 +7,39 @@
 		<div class="row">
 			<div class="col-sm-7">
 				<div class="md-input-group small-12 columns">
-					<input class="md-input" id="roomName" type="text" placeholder="{{ 'WEBEX.CREATEROOMINFO' | translate }}"
-						[(ngModel)]="roomName">
+					<input class="md-input" id="roomName" type="text"
+						placeholder="{{ 'WEBEX.CREATEROOMINFO' | translate }}" [(ngModel)]="roomName">
 				</div>
 			</div>
 			<div class="col-sm-2">
-				<button id="createRoom" class="md-button md-button--blue" (click)="createRoom()">{{ 'WEBEX.CREATEROOM' | translate }}</button>
+				<button id="createRoom" class="md-button md-button--blue" (click)="createRoom()">{{ 'WEBEX.CREATEROOM' |
+					translate }}</button>
 			</div>
 		</div>
 		<div class="row">
-				<button type="button" class="md-button md-button--blue" id="listRoom" (click)="listRooms()">{{ 'WEBEX.LOADCONTACTS' | translate }}</button>
+			<button type="button" class="md-button md-button--blue" id="listRoom" (click)="listRooms()">{{
+				'WEBEX.LOADCONTACTS' | translate }}</button>
 		</div>
 		<div *ngIf="webexSpace">
 			<div class="row">
-				
-					<div class="col-sm-7">
-						<select id="webexRooms" class="browser-default custom-select" name="space"
-							[(ngModel)]="selectedRoomId" #space="ngModel">
-							<option *ngFor="let rooms of room" [value]="rooms.id">{{rooms.title}}
-							</option>
-						</select>
-					</div>
+
+				<div class="col-sm-7">
+					<select id="webexRooms" class="browser-default custom-select" name="space"
+						[(ngModel)]="selectedRoomId" #space="ngModel">
+						<option *ngFor="let rooms of room" [value]="rooms.id">{{rooms.title}}
+						</option>
+					</select>
+				</div>
+				<div class="col-sm-2">
+					<button type="button" class="md-button md-button--blue" id="loadMessage" (click)="loadMessages()">{{
+						'WEBEX.LOADMESSAGES' | translate }}</button>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-7">
 					<div class="md-input-group small-12 columns">
-						<input class="md-input" id="memberEmail" type="email" placeholder="{{ 'WEBEX.ADDMEMBERINFO' | translate }}"
-							[(ngModel)]="memberEmail">
+						<input class="md-input" id="memberEmail" type="email"
+							placeholder="{{ 'WEBEX.ADDMEMBERINFO' | translate }}" [(ngModel)]="memberEmail">
 					</div>
 				</div>
 				<div class="col-sm-2">
@@ -44,8 +50,8 @@
 			<div class="row">
 				<div class="col-sm-7">
 					<div class="md-input-group small-12 columns">
-						<input class="md-input" id="message" type="text" placeholder="{{ 'WEBEX.MESSAGEINFO' | translate }}"
-							[(ngModel)]="message">
+						<input class="md-input" id="message" type="text"
+							placeholder="{{ 'WEBEX.MESSAGEINFO' | translate }}" [(ngModel)]="message">
 					</div>
 				</div>
 				<div class="col-sm-2">
@@ -53,6 +59,19 @@
 						(click)="sendMessageToSpace()">{{ 'WEBEX.SEND' | translate }}</button>
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
+<hr />
+<div *ngIf="showMessageTab" id="activity-items">
+	<i class="md-icon icon icon-close-space_18" (click)="onSpaceClose()" title="Close the chat history space"></i>
+	<div *ngFor="let message of messages">
+		<div id="senderDiv">
+			<span>{{message.personEmail}}</span>
+			<span> {{message.created}} </span>
+		</div>
+		<div>
+			<span>{{message.text}}</span>
 		</div>
 	</div>
 </div>
