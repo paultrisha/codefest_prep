@@ -49,7 +49,24 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ### End-to-End tests
 
-Run `npm run cypress:headless` to execute the end-to-end tests in headless mode via [Cypress](https://www.cypress.io/).
+Run `cypress run --config screenshotOnRunFailure=false,video=false --env access_token=<your access token>` to execute the end-to-end tests in headless mode via [Cypress](https://www.cypress.io/).
+
+<p align="center">
+    <img src="src/assets/images/cypressTest.png" height="200px" alt="test" />
+</p>
+
+The E2E tests verify the following functionalities : 
+* Loads the webex app with the access token provided by the user
+* After succesful login it should land up in the welcome page
+* Creates a space - `my test room`
+* Loads the contacts for the user
+* Adds a test member `test@c.com` to the space `my test room`
+* Sends `Hello !` message to the space `my test room`
+* Verifies alert message if no member is added to space but `Add Member` button is clicked
+* Verifies alert message if no message is typed but the `Send` button is clicked
+* Verifies alert message if no space name is entered to create a space but the `Create Room` button is clicked
+* Verifies alert message if member is added to individual contact
+* Verifies the message history in `my test room` space
 
 ## Code styling
 

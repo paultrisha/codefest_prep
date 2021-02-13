@@ -108,4 +108,35 @@ describe('WebexComponent', () => {
       expect(compiled.querySelector('#message')).toBeTruthy();
     });
   });
+
+  it('it should display the load messages button after contacts are loaded', () => {
+    fixture = TestBed.createComponent(WebexComponent);
+    component = fixture.componentInstance;
+    component.room[0] = new Room();
+    component.room[0].id = '12345';
+    component.room[0].title = 'My test room';
+    component.webexSpace = true;
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('#loadMessage')).toBeTruthy();
+    });
+  });
+
+  it('it should display the message history after load messages button is clicked', () => {
+    fixture = TestBed.createComponent(WebexComponent);
+    component = fixture.componentInstance;
+    component.room[0] = new Room();
+    component.room[0].id = '12345';
+    component.room[0].title = 'My test room';
+    component.webexSpace = true;
+	component.showMessageTab = true;
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('#closeBtn')).toBeTruthy();
+    });
+  });
 });

@@ -94,6 +94,18 @@ describe('Webex Spec', () => {
 			cy.contains('Conversation already has maximum number of participants');
 			cy.get('button[id="ok-btn"]').click();
 		});
+
+		it('It should load message history', () => {
+			cy.get('select').select('my test room');
+			cy.get('button[id="loadMessage"]').click();
+			cy.intercept({
+				method: 'GET',
+    			url: 'https://hydra-a.wbx2.com/v1/messages?*',
+			}).as('loadMessage')
+			// cy.wait('@loadMessage')
+			cy.contains('Hello !');
+		});
+
 	});
 
 });

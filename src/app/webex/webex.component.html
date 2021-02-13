@@ -64,7 +64,7 @@
 </div>
 <hr />
 <div *ngIf="showMessageTab" id="activity-items">
-	<i class="md-icon icon icon-close-space_18" (click)="onSpaceClose()" title="Close the chat history space"></i>
+	<i id="closeBtn" class="md-icon icon icon-close-space_18" (click)="onSpaceClose()" title="Close the chat history space"></i>
 	<div *ngFor="let message of messages">
 		<div id="senderDiv">
 			<span>{{message.personEmail}}</span>
