@@ -5,6 +5,7 @@ The project is created as a part of Codefest 2021 Preparatory task. It is a simp
 * [Create a webex space/room](src/assets/docs/createroom/README.md)
 * [Add memeber to space](src/assets/docs/addmember/README.md)
 * [Send a message to your contact](src/assets/docs/sendmessage/README.md)
+* [Load message history](src/assets/docs/loadmessage/README.md)
 * [Logout](src/assets/docs/logout/README.md)
 
 ## Technologies Overview

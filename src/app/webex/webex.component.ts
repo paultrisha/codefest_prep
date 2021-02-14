@@ -71,7 +71,11 @@ export class WebexComponent implements OnInit {
       this.selectedRoomId = this.room[0].id;
       this.loader = false;
       this.webexSpace = true;
-    });
+    })
+	.catch((error) => {
+		this.logger.debug('Error occured while loading contacts');
+		this.loader = false;
+	});;
   }
 
   addMemebersToSpace() {
@@ -152,7 +156,11 @@ export class WebexComponent implements OnInit {
       }
       this.loader = false;
       this.showMessageTab = true;
-    });
+    })
+	.catch((error) => {
+		this.logger.debug('Error occured while loading messages');
+		this.loader = false;
+	});
   }
 
   onSpaceClose() {
