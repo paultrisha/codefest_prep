@@ -18,7 +18,7 @@ Once the contact details are fetched, the menu displays all the contacts as show
     <img src="contacts.png" height="400px" alt="contacts" />
 </p>
 
-Select the contact person or the space for which you wish to load the messages 
+Select the contact person or the space for which you wish to load the messages and click on the `Load messages` button
 
 <p align="center">
     <img src="chatHistory.png" height="400px" alt="load message" />
@@ -27,7 +27,7 @@ Select the contact person or the space for which you wish to load the messages
 To close the chat history panel click on the close-space button
 
 <p align="center">
-    <img src="spaceClose.png" height="400px" alt="space close" />
+    <img src="spaceClose.png" height="200px" alt="space close" />
 </p>
 
 
