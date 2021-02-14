@@ -14,7 +14,8 @@
 		"SEND": "Send",
 		"MESSAGEINFO": "Type your message",
 		"ADDMEMBERINFO": "Enter member email id",
-		"CREATEROOMINFO": "Enter room name"
+		"CREATEROOMINFO": "Enter room name",
+		"LOADMESSAGES": "Load messages"
 	}
 
 }
