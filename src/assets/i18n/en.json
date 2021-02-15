@@ -16,6 +16,15 @@
 		"ADDMEMBERINFO": "Enter member email id",
 		"CREATEROOMINFO": "Enter room name",
 		"LOADMESSAGES": "Load messages"
-	}
-
+	},
+	"WELCOME": "Welcome to webex !",
+	"ROOMCREATED" : "Room created !",
+	"ERROROCCURED" : "Error occurred ! Please try again",
+	"NOROOMNAME" : "Please enter room name",
+	"MEMBERADDED" : "Member added !",
+	"MAXMEMBER" : "Conversation already has maximum number of participants",
+	"ERROROCCUREDADDMEMBER" : "Error occurred ! Please enter valid email id",
+	"NOEMAILID" : "Please select room & enter member email Id",
+	"MESSAGESENT" : "Message sent !",
+	"NOMESSAGE" : "Please select room & enter message to be send"
 }

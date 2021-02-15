@@ -131,7 +131,7 @@ describe('WebexComponent', () => {
     component.room[0].id = '12345';
     component.room[0].title = 'My test room';
     component.webexSpace = true;
-	component.showMessageTab = true;
+    component.showMessageTab = true;
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       fixture.detectChanges();

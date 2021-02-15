@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { WebexService } from '../services/webex.service';
 
@@ -8,7 +9,11 @@ import { WebexService } from '../services/webex.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private webexService: WebexService, private logger: NGXLogger) {}
+  constructor(
+    private webexService: WebexService,
+    private logger: NGXLogger,
+    private translate: TranslateService
+  ) {}
 
   showAlertMessage = false;
   dialogMessage;
@@ -16,7 +21,9 @@ export class HeaderComponent implements OnInit {
   userInitials = '';
 
   ngOnInit() {
-    this.dialogMessage = 'Welcome to Webex !';
+    this.translate.get('WELCOME').subscribe((data: any) => {
+      this.dialogMessage = data;
+    });
     this.showAlertMessage = true;
   }
 
