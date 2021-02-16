@@ -29,6 +29,20 @@ export class WebexService {
     this.listenForWebex();
   }
 
+  onInit() {
+    this.webex = Webex.init({
+      config: {
+        meetings: {
+          deviceType: 'WEB',
+        },
+      },
+      credentials: {
+        access_token: localStorage.getItem('access_token'),
+      },
+    });
+    this.listenForWebex();
+  }
+
   async listenForWebex() {
     this.webex.once(`ready`, () => {
       if (this.webex.credentials.supertoken) {

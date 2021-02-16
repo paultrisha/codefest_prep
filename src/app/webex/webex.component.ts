@@ -33,8 +33,13 @@ export class WebexComponent implements OnInit {
 
   ngOnInit() {
     this.loader = true;
-    this.webexService.beforeLogin();
-    this.loader = false;
+    if (localStorage.getItem('access_token') == null) {
+      this.webexService.beforeLogin();
+      this.loader = false;
+    } else {
+      this.webexService.onInit();
+      this.loader = false;
+    }
   }
 
   createRoom() {
