@@ -87,6 +87,11 @@ Run `ng lint` to check if there is any lint failures
 
 Proper checks are made to catch the error scenarios while invoking webex SDKs. If there is some error, the same is logged using [NGX Logger](https://www.npmjs.com/package/ngx-logger) & the user is alerted with appropriate message in the dialog box.
 
+## Deployment
+
+Run `npm run build:prod` to build the webapp in production mode and deploy the same to github pages, make a copy of docs/index.html and name it docs/404.html. Commit your changes and push.
+The webapp is available in the link : [https://paultrisha.github.io/codefest_prep/](https://paultrisha.github.io/codefest_prep/)
+
 ## Further help
 
 * To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
